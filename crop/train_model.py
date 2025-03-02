@@ -5,24 +5,29 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load dataset
-file_path = "Crop_recommendation.csv"  # Ensure this file is present in the same directory
+file_path = "Crop_recommendation.csv"
 df = pd.read_csv(file_path)
 
-# Select features (Only temperature & humidity)
-X = df[['temperature', 'humidity']]
-y = df['label']  # Crop label
+# Check for missing values
+if df.isnull().sum().sum() > 0:
+    df.dropna(inplace=True)
 
-# Split dataset for training
+# Select features
+features = ['temperature', 'humidity', 'ph', 'rainfall']  # Consider more relevant features
+X = df[features]
+y = df['label']
+
+# Split dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Train model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+model = RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42)  # Tuned hyperparameters
 model.fit(X_train, y_train)
 
-# Evaluate model accuracy
+# Evaluate accuracy
 y_pred = model.predict(X_test)
 print(f"Model Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
 
-# Save trained model
+# Save model
 joblib.dump(model, "crop_model.pkl")
 print("✅ Model saved as crop_model.pkl")
