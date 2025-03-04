@@ -29,5 +29,5 @@ y_pred = model.predict(X_test)
 print(f"Model Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
 
 # Save model
-joblib.dump(model, "crop_model.pkl")
+joblib.dump(model, "croNarayangarhp_model.pkl")
 print("✅ Model saved as crop_model.pkl")
