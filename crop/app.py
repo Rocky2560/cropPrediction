@@ -6,7 +6,7 @@ import joblib
 app = Flask(__name__)
 
 # Load trained model
-model = joblib.load("crop_model.pkl")
+model = joblib.load("crop/crop_model.pkl")
 
 # Function to fetch real-time weather data
 def get_weather_data(api_key, city):
