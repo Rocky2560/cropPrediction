@@ -4,7 +4,9 @@
 This project consists of a **machine learning model** trained using a **Random Forest Classifier** to recommend suitable crops based on environmental factors like **temperature and humidity**. Additionally, a **Flask web application** fetches real-time weather data using the OpenWeather API and provides crop recommendations accordingly.
 
 ---
-
+## 📌 Demo
+https://cropprediction-trjp.onrender.com/
+---
 ## 📂 Project Structure
 ```
 ├── Crop_recommendation.csv   # Dataset used for training
